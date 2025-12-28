@@ -103,7 +103,7 @@ export const DATA = {
       badges: [],
       location: "United States, America",
       title: "Software Engineer",
-      logoUrl: "/tanstack.png",
+      logoUrl: "/Tanstack.png",
       start: "January 2025",
       end: "March 2025",
       description:
