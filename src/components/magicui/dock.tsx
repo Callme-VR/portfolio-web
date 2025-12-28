@@ -9,7 +9,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import React, { PropsWithChildren, useRef } from "react";
+import React, { PropsWithChildren, useRef, useEffect, useLayoutEffect } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -44,12 +44,13 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     ref,
   ) => {
     const mouseX = useMotionValue(Infinity);
+    const dockRef = useRef<HTMLDivElement>(null);
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
-        if (React.isValidElement(child) && child.type === DockIcon) {
-          return React.cloneElement(child, {
-            ...child.props,
+        if (React.isValidElement<DockIconProps>(child) && child.type === DockIcon) {
+          return React.cloneElement<DockIconProps>(child, {
+            ...(child.props as DockIconProps),
             mouseX: mouseX,
             size: iconSize,
             magnification: iconMagnification,
@@ -62,8 +63,20 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
     return (
       <motion.div
-        ref={ref}
-        onMouseMove={(e) => mouseX.set(e.pageX)}
+        ref={(node) => {
+          if (typeof ref === "function") {
+            ref(node);
+          } else if (ref) {
+            ref.current = node;
+          }
+          dockRef.current = node;
+        }}
+        onMouseMove={(e) => {
+          if (dockRef.current) {
+            const rect = dockRef.current.getBoundingClientRect();
+            mouseX.set(e.clientX - rect.left);
+          }
+        }}
         onMouseLeave={() => mouseX.set(Infinity)}
         {...props}
         className={cn(dockVariants({ className }), {
@@ -103,17 +116,73 @@ const DockIcon = ({
   const ref = useRef<HTMLDivElement>(null);
   const padding = Math.max(6, size * 0.2);
   const defaultMouseX = useMotionValue(Infinity);
+  const iconX = useMotionValue(0);
 
-  const distanceCalc = useTransform(mouseX ?? defaultMouseX, (val: number) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-    return val - bounds.x - bounds.width / 2;
+  useEffect(() => {
+    const updateIconX = () => {
+      if (ref.current && ref.current.parentElement) {
+        const iconBounds = ref.current.getBoundingClientRect();
+        const dockBounds = ref.current.parentElement.getBoundingClientRect();
+        iconX.set(iconBounds.left - dockBounds.left + iconBounds.width / 2);
+      }
+    };
+
+    updateIconX();
+    
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(updateIconX);
+    });
+    if (ref.current?.parentElement) {
+      resizeObserver.observe(ref.current.parentElement);
+    }
+    if (ref.current) {
+      resizeObserver.observe(ref.current);
+    }
+
+    window.addEventListener("resize", updateIconX);
+    
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateIconX);
+    };
+  }, [iconX]);
+
+  // Create a combined motion value that updates when either mouseX or iconX changes
+  const distanceValue = useMotionValue(Infinity);
+  
+  useEffect(() => {
+    const updateDistance = () => {
+      const mouse = (mouseX ?? defaultMouseX).get();
+      if (mouse === Infinity) {
+        distanceValue.set(Infinity);
+        return;
+      }
+      const iconCenter = iconX.get();
+      distanceValue.set(mouse - iconCenter);
+    };
+
+    // Subscribe to mouseX changes
+    const unsubscribeMouse = (mouseX ?? defaultMouseX).on("change", updateDistance);
+    // Subscribe to iconX changes  
+    const unsubscribeIcon = iconX.on("change", updateDistance);
+    
+    updateDistance(); // Initial calculation
+    
+    return () => {
+      unsubscribeMouse();
+      unsubscribeIcon();
+    };
+  }, [mouseX, defaultMouseX, iconX, distanceValue]);
+
+  const distanceCalc = distanceValue;
+
+  const sizeTransform = useTransform(distanceCalc, (val) => {
+    if (val === Infinity) return size;
+    const absDistance = Math.abs(val);
+    if (absDistance > distance) return size;
+    const scale = 1 - absDistance / distance;
+    return size + (magnification - size) * scale;
   });
-
-  const sizeTransform = useTransform(
-    distanceCalc,
-    [-distance, 0, distance],
-    [size, magnification, size],
-  );
 
   const scaleSize = useSpring(sizeTransform, {
     mass: 0.1,
