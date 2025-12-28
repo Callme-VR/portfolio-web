@@ -3,6 +3,7 @@ import matter from "gray-matter";
 import path from "path";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
@@ -14,6 +15,7 @@ type Metadata = {
   image?: string;
 };
 
+
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {
     return [];
@@ -24,7 +26,8 @@ function getMDXFiles(dir: string) {
 export async function markdownToHTML(markdown: string) {
   const p = await unified()
     .use(remarkParse)
-    .use(remarkRehype)
+    .use(remarkGfm) // Support GitHub Flavored Markdown (tables, strikethrough, etc.)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypePrettyCode, {
       // https://rehype-pretty.pages.dev/#usage
       theme: {
@@ -33,7 +36,7 @@ export async function markdownToHTML(markdown: string) {
       },
       keepBackground: false,
     })
-    .use(rehypeStringify)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(markdown);
 
   return p.toString();
