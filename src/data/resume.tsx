@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export const DATA = {
   name: "Vishal Rajput",
   initials: "VSR",
-  url: "https://vishalrajput.vercel.app",
+  url: "https://vishal-lime.vercel.app",
   location: "Noida, India",
   locationLink: "https://www.google.com/maps/place/Noida",
   description:
