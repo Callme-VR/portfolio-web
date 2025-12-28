@@ -459,7 +459,7 @@ export const DATA = {
       location: "Remote, india",
       description:"make a function and correct the issue realted to Large filed upload in db using nodejs and express js server",
       
-      image:"/tanstack.png",
+      image:"/Tanstack.png",
       links: [
         {
           title: "Source",
