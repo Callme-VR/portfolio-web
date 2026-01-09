@@ -48,6 +48,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { ChatWidget } from "@/components/chat-widget";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,6 +67,7 @@ export default function RootLayout({
           <TooltipProvider delayDuration={0}>
             {children}
             <Navbar />
+            <ChatWidget />
           </TooltipProvider>
         </ThemeProvider>
       </body>
