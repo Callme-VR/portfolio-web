@@ -1,20 +1,11 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
-import type{ Metadata } from "next";
-
-
-
-
-
-
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:"Home page | Resume",
-  description:"this is an home pages of my portfolio websites"
-}
-
-
-
+  title: "Home page | Resume",
+  description: "this is an home pages of my portfolio websites",
+};
 
 export const DATA = {
   name: "Vishal Rajput",
@@ -26,7 +17,7 @@ export const DATA = {
     "Software Engineer and a freelancer and Indie Developer. I love building things and helping the businesses through technology and Skills. and very active on X.",
   summary:
     "I am a software engineer with a passion for building things and helping the businesses through technology and Skills. I love building things and helping people. Very active on X.",
-  avatarUrl: "/me.png",
+  avatarUrl: "/vishal.jpeg",
 
   skills: [
     "React",
@@ -86,7 +77,7 @@ export const DATA = {
 
         navbar: true,
       },
-  
+
       email: {
         name: "Send Email",
         url: "mailto:vr347147@gmail.com",
@@ -239,7 +230,7 @@ export const DATA = {
         "prisma",
         "VERCEL",
         "Docker",
-        "POSTGRESQL"
+        "POSTGRESQL",
       ],
       links: [
         {
@@ -257,9 +248,6 @@ export const DATA = {
       video: "",
     },
   ],
-
-
-
 
   hackathons: [
     // {
@@ -311,7 +299,7 @@ export const DATA = {
     //     },
     //   ],
     // },
-    
+
     // {
     //   title: "HackDavis",
     //   dates: "January 20th - 21st, 2018",
@@ -457,9 +445,10 @@ export const DATA = {
       title: "Open Source",
       dates: "Sep, 2025",
       location: "Remote, india",
-      description:"make a function and correct the issue realted to Large filed upload in db using nodejs and express js server",
-      
-      image:"/Tanstack.png",
+      description:
+        "make a function and correct the issue realted to Large filed upload in db using nodejs and express js server",
+
+      image: "/Tanstack.png",
       links: [
         {
           title: "Source",
@@ -467,13 +456,14 @@ export const DATA = {
           href: "https://github.com/burakorkmez/fullstack-chat-app/issues/16",
         },
       ],
-
-    },{
+    },
+    {
       title: "Open Source Contributer in Vercel",
       dates: "december, 2025",
       location: "Remote, india",
-      description:"Report an Error to vercel about nextjs error turbopack related error and webpack ",
-      image:"/vercel.webp",
+      description:
+        "Report an Error to vercel about nextjs error turbopack related error and webpack ",
+      image: "/vercel.webp",
       links: [
         {
           title: "Source",
@@ -481,23 +471,7 @@ export const DATA = {
           href: "https://github.com/vercel/next.js/discussions/87556#discussioncomment-15323199",
         },
       ],
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    },
 
     // {
     //   title: "Make School's Student App Competition 2017",
@@ -518,7 +492,7 @@ export const DATA = {
     //       icon: <Icons.globe className="h-4 w-4" />,
     //       href: "https://devpost.com/software/pocketdoc-react-native",
     //     },
-           
+
     //     {
     //       title: "Source",
     //       icon: <Icons.github className="h-4 w-4" />,
@@ -549,7 +523,7 @@ export const DATA = {
     //       icon: <Icons.globe className="h-4 w-4" />,
     //       href: "https://devpost.com/software/pocketdoc-react-native",
     //     },
-       
+
     //     {
     //       title: "Source",
     //       icon: <Icons.github className="h-4 w-4" />,
