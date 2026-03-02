@@ -14,9 +14,9 @@ export const DATA = {
   location: "Noida, India",
   locationLink: "https://www.google.com/maps/place/Noida",
   description:
-    "Software Engineer and a freelancer and Indie Developer. I love building things and helping the businesses through technology and Skills. and very active on X.",
+    "Ai Engineer and Designer. I love building things and helping the businesses through technology and Skills. and very active on X.",
   summary:
-    "I am a software engineer with a passion for building things and helping the businesses through technology and Skills. I love building things and helping people. Very active on X.",
+    "I am a Ai Engineer and software engineer with a passion for building things and helping the businesses through technology and Skills. I love building things and helping people. Very active on X.",
   avatarUrl: "/vishal.jpeg",
 
   skills: [

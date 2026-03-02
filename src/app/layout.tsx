@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     google: "",
     yandex: "",
   },
+  icons: {
+    icon: "/vishal.jpeg",
+  },
 };
 
 export default function RootLayout({
