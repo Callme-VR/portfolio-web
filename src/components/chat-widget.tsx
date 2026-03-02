@@ -1,29 +1,21 @@
 "use client";
 
-import { useChat } from "@ai-sdk/react";
+import { useChat, type UIMessage } from "@ai-sdk/react";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageCircle, X, Send, Loader2, User, Bot } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import ReactMarkdown from "react-markdown";
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [input, setInput] = useState("");
   const { messages, sendMessage, status } = useChat();
-  const isLoading = status === "submitted" || status === "streaming";
+  const isLoading = status === 'submitted';
+  const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-    const message = input;
-    setInput("");
-    await sendMessage({ text: message });
-  };
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -64,12 +56,12 @@ export function ChatWidget() {
               <div className="flex flex-col gap-4">
                 {messages.length === 0 && (
                   <div className="text-center text-muted-foreground mt-4 text-sm">
-                    <p>Hi! I'm an AI assistant.</p>
+                    <p>Hi! I&apos;m an AI assistant.</p>
                     <p>Ask me anything about my work, projects, or skills!</p>
                   </div>
                 )}
                 
-                {messages.map((m) => (
+                {messages.map((m: UIMessage) => (
                   <div
                     key={m.id}
                     className={`flex gap-2 ${
@@ -92,11 +84,12 @@ export function ChatWidget() {
                       <div className="prose dark:prose-invert max-w-none text-sm">
                         <ReactMarkdown 
                           components={{
-                              ul: ({node, ...props}) => <ul className="list-disc pl-4 my-1" {...props} />,
-                              ol: ({node, ...props}) => <ol className="list-decimal pl-4 my-1" {...props} />,
+                              ul: ({ ...props}) => <ul className="list-disc pl-4 my-1" {...props} />,
+                              ol: ({ ...props}) => <ol className="list-decimal pl-4 my-1" {...props} />,
                           }}
                         >
-                          {m.parts.filter(p => p.type === 'text').map(p => (p as any).text).join('')}
+                          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                          {(m as any).content}
                         </ReactMarkdown>
                       </div>
                     </div>
@@ -118,12 +111,23 @@ export function ChatWidget() {
           </CardContent>
 
           <CardFooter className="p-3 border-t">
-            <form onSubmit={handleSubmit} className="flex w-full gap-2">
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                if (input.trim()) {
+                  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+                  sendMessage({ role: 'user', content: input } as any);
+                  setInput('');
+                }
+              }}
+              className="flex w-full gap-2"
+            >
               <Input
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={e => setInput(e.target.value)}
                 placeholder="Ask something..."
                 className="flex-1"
+                disabled={isLoading}
               />
               <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
                 <Send className="h-4 w-4" />

@@ -9,7 +9,12 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import React, { PropsWithChildren, useRef, useEffect, useLayoutEffect } from "react";
+import React, {
+  PropsWithChildren,
+  useRef,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -27,7 +32,7 @@ const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md",
+  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[54px] w-max items-center justify-center gap-2 rounded-full border p-2 backdrop-blur-md",
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -48,7 +53,10 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
-        if (React.isValidElement<DockIconProps>(child) && child.type === DockIcon) {
+        if (
+          React.isValidElement<DockIconProps>(child) &&
+          child.type === DockIcon
+        ) {
           return React.cloneElement<DockIconProps>(child, {
             ...(child.props as DockIconProps),
             mouseX: mouseX,
@@ -93,8 +101,10 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
 Dock.displayName = "Dock";
 
-export interface DockIconProps
-  extends Omit<MotionProps & React.HTMLAttributes<HTMLDivElement>, "children"> {
+export interface DockIconProps extends Omit<
+  MotionProps & React.HTMLAttributes<HTMLDivElement>,
+  "children"
+> {
   size?: number;
   magnification?: number;
   distance?: number;
@@ -128,7 +138,7 @@ const DockIcon = ({
     };
 
     updateIconX();
-    
+
     const resizeObserver = new ResizeObserver(() => {
       requestAnimationFrame(updateIconX);
     });
@@ -140,7 +150,7 @@ const DockIcon = ({
     }
 
     window.addEventListener("resize", updateIconX);
-    
+
     return () => {
       resizeObserver.disconnect();
       window.removeEventListener("resize", updateIconX);
@@ -149,7 +159,7 @@ const DockIcon = ({
 
   // Create a combined motion value that updates when either mouseX or iconX changes
   const distanceValue = useMotionValue(Infinity);
-  
+
   useEffect(() => {
     const updateDistance = () => {
       const mouse = (mouseX ?? defaultMouseX).get();
@@ -162,12 +172,15 @@ const DockIcon = ({
     };
 
     // Subscribe to mouseX changes
-    const unsubscribeMouse = (mouseX ?? defaultMouseX).on("change", updateDistance);
-    // Subscribe to iconX changes  
+    const unsubscribeMouse = (mouseX ?? defaultMouseX).on(
+      "change",
+      updateDistance,
+    );
+    // Subscribe to iconX changes
     const unsubscribeIcon = iconX.on("change", updateDistance);
-    
+
     updateDistance(); // Initial calculation
-    
+
     return () => {
       unsubscribeMouse();
       unsubscribeIcon();
