@@ -24,7 +24,7 @@ export default function Navbar() {
                   href={item.href}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
-                    "size-10 rounded-full",
+                    "size-full rounded-full",
                   )}
                 >
                   <item.icon className="size-4" />
@@ -36,7 +36,7 @@ export default function Navbar() {
             </Tooltip>
           </DockIcon>
         ))}
-        <Separator orientation="vertical" className="h-full py-2" />
+        <Separator orientation="vertical" className="h-8" />
         {Object.entries(DATA.contact.social)
           .filter(([_, social]) => social.navbar)
           .map(([name, social]) => (
@@ -47,7 +47,7 @@ export default function Navbar() {
                     href={social.url}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-10 rounded-full",
+                      "size-full rounded-full",
                     )}
                   >
                     <social.icon className="size-4" />
@@ -59,7 +59,7 @@ export default function Navbar() {
               </Tooltip>
             </DockIcon>
           ))}
-        <Separator orientation="vertical" className="h-full py-2" />
+        <Separator orientation="vertical" className="h-8" />
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
