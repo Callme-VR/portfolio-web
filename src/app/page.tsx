@@ -41,11 +41,43 @@ export default function Page() {
       </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">About</h2>
+          <h2 className="text-xl font-bold">About Me</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             <Markdown>{DATA.summary}</Markdown>
+          </div>
+        </BlurFade>
+        <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
+          <div className="mt-6 flex items-center gap-2 rounded-2xl border border-primary/10 bg-primary/5 p-4 transition-all duration-300 hover:bg-primary/10 hover:shadow-lg dark:bg-white/5 dark:hover:bg-white/10">
+            <div className="flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-mail"
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Get in touch
+              </span>
+              <Link
+                href={`mailto:${DATA.contact.email}`}
+                className="font-sans text-sm font-semibold hover:underline sm:text-base"
+              >
+                {DATA.contact.email}
+              </Link>
+            </div>
           </div>
         </BlurFade>
       </section>
@@ -102,13 +134,33 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-1">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+          {Object.entries(DATA.skills).map(([category, skills], categoryId) => (
+            <div
+              key={category}
+              className="space-y-2 group rounded-xl p-2 transition-all duration-500 hover:bg-black/5 dark:hover:bg-white/5 hover:backdrop-blur-sm hover:border hover:border-black/5 dark:hover:border-white/10 hover:shadow-2xl"
+            >
+              <BlurFade delay={BLUR_FADE_DELAY * 10 + categoryId * 0.05}>
+                <h3 className="text-sm font-medium text-muted-foreground group-hover:text-primary transition-colors duration-300">
+                  {category}
+                </h3>
               </BlurFade>
-            ))}
-          </div>
+              <div className="flex flex-wrap gap-1">
+                {skills.map((skill, id) => (
+                  <BlurFade
+                    key={skill}
+                    delay={BLUR_FADE_DELAY * 11 + categoryId * 0.05 + id * 0.02}
+                  >
+                    <Badge
+                      key={skill}
+                      className="transition-all duration-300 ease-out hover:scale-110 hover:bg-black/5 dark:hover:bg-white/20 hover:backdrop-blur-md hover:border-black/10 dark:hover:border-white/30 hover:shadow-xl cursor-default"
+                    >
+                      {skill}
+                    </Badge>
+                  </BlurFade>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
       <section id="projects">
