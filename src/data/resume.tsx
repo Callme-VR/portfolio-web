@@ -25,7 +25,7 @@ export const DATA = {
       "React",
       "Next.js",
       "Node.js",
-      "Tailwind CSS",
+      "Fast Api",
       "Prisma",
       "GraphQL",
       "REST APIs",
