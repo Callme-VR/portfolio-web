@@ -33,7 +33,7 @@ export const DATA = {
     Databases: ["PostgreSQL", "MongoDB", "SQLITE", "SQL"],
     DevOps: ["Docker", "Kubernetes", "AWS", "Git", "Linux", "CI/CD"],
     "AI/ML": ["NumPy", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn"],
-    Design: ["Figma", "UI/UX"],
+    Design: ["Figma", "UI/UX", "Framer"],
   },
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
