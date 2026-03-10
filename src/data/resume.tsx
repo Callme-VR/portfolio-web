@@ -137,7 +137,7 @@ export const DATA = {
     },
     {
       title: "ReviewerAi",
-      href: "https://riviewer.vercel.app/login",
+      href: "https://riviewer.vercel.app",
       dates: "November 2024 - Present",
       active: true,
       description:
