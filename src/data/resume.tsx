@@ -156,7 +156,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://riviewer.vercel.app/login",
+          href: "https://riviewer.vercel.app",
           icon: <Icons.globe className="size-4" />,
         },
         {
