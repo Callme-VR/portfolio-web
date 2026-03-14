@@ -161,7 +161,7 @@ export const DATA = {
         },
         {
           type: "Source",
-          href: "https://github.com/dillionverma/llm.report",
+          href: "https://github.com/Callme-VR/riviewer",
           icon: <Icons.github className="size-4" />,
         },
       ],
