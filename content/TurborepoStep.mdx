@@ -1,0 +1,321 @@
+# Turborepo SaaS Setup (Bun + Tailwind + shadcn/ui)
+
+This guide shows how to build a **scalable SaaS monorepo** using:
+
+* Turborepo
+* Bun runtime
+* Next.js
+* TailwindCSS
+* shadcn/ui
+* Shared packages
+
+---
+
+## Final Folder Structure
+
+```
+saas-app/
+│
+├── apps/
+│   ├── web/          # Next.js frontend
+│   └── api/          # Backend service
+│
+├── packages/
+│   ├── ui/           # Shared UI components
+│   ├── config/       # Shared configs
+│   └── database/     # Prisma / DB logic
+│
+├── turbo.json
+├── package.json
+└── bun.lockb
+```
+
+---
+
+# 1. Create Turborepo
+
+```bash
+bunx create-turbo@latest saas-app
+cd saas-app
+```
+
+Select:
+
+```
+Framework: Next.js
+Package Manager: Bun
+```
+
+---
+
+# 2. Configure Workspaces
+
+Edit root **package.json**
+
+```json
+{
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
+```
+
+---
+
+# 3. Install Dependencies
+
+Run in the root directory:
+
+```bash
+bun install
+```
+
+---
+
+# 4. Install Tailwind in Web App
+
+Navigate to the web app.
+
+```bash
+cd apps/web
+```
+
+Install Tailwind dependencies.
+
+```bash
+bun add tailwindcss @tailwindcss/postcss postcss autoprefixer
+```
+
+Initialize Tailwind.
+
+```bash
+bunx tailwindcss init -p
+```
+
+---
+
+# 5. Configure Tailwind
+
+Edit:
+
+```
+apps/web/tailwind.config.ts
+```
+
+```ts
+import type { Config } from "tailwindcss"
+
+const config: Config = {
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "../../packages/ui/**/*.{ts,tsx}"
+  ],
+  theme: {
+    extend: {}
+  },
+  plugins: []
+}
+
+export default config
+```
+
+---
+
+# 6. Add Tailwind to Global CSS
+
+Edit:
+
+```
+apps/web/app/globals.css
+```
+
+```css
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+```
+
+---
+
+# 7. Setup shadcn/ui
+
+Run the initialization command.
+
+```bash
+bunx shadcn@latest init
+```
+
+Select the following options.
+
+```
+Framework: Next.js
+Style: Default
+Base color: Slate
+CSS Variables: Yes
+Tailwind config: tailwind.config.ts
+```
+
+---
+
+# 8. Install Required UI Dependencies
+
+Install the packages required for shadcn components.
+
+```bash
+bun add class-variance-authority clsx tailwind-merge lucide-react
+```
+
+---
+
+# 9. Add Your First Component
+
+Example: add a button component.
+
+```bash
+bunx shadcn@latest add button
+```
+
+Component will be created in:
+
+```
+apps/web/components/ui/button.tsx
+```
+
+---
+
+# 10. Create Shared UI Package (Recommended)
+
+Create the directory:
+
+```
+packages/ui
+```
+
+Structure:
+
+```
+packages/ui/
+│
+├── components/
+│   └── button.tsx
+│
+├── index.ts
+└── package.json
+```
+
+Example `index.ts`
+
+```ts
+export * from "./components/button"
+```
+
+Usage inside apps:
+
+```tsx
+import { Button } from "@repo/ui"
+```
+
+---
+
+# 11. Setup Turbo Pipeline
+
+Edit **turbo.json**
+
+```json
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"]
+    },
+    "dev": {
+      "cache": false
+    },
+    "lint": {},
+    "test": {}
+  }
+}
+```
+
+---
+
+# 12. Run the Project
+
+From the root directory.
+
+```bash
+bun run dev
+```
+
+Turbo will start the development servers for the apps.
+
+---
+
+# 13. Recommended SaaS Packages
+
+Install useful libraries.
+
+```bash
+bun add zod react-hook-form @tanstack/react-query
+```
+
+Authentication options:
+
+```
+next-auth
+better-auth
+clerk
+```
+
+Database options:
+
+```
+prisma
+drizzle
+supabase
+```
+
+---
+
+# 14. Useful Turbo Commands
+
+Run development mode.
+
+```bash
+bun run dev
+```
+
+Build the entire monorepo.
+
+```bash
+bun run build
+```
+
+Run a specific app.
+
+```bash
+bun turbo run dev --filter=web
+```
+
+---
+
+# Summary
+
+You now have a **production-ready SaaS monorepo** using:
+
+* Bun
+* Turborepo
+* Next.js
+* TailwindCSS
+* shadcn/ui
+* Shared packages
+
+This architecture allows your SaaS project to scale cleanly as new apps and packages are added.
