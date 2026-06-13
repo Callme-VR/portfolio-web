@@ -87,6 +87,18 @@ export const DATA = {
       description:
         "Working as a open source contributor and a Software Engineer at Tanstack. Building the next generation of web development tools.",
     },
+    {
+      company: "HuggingFace",
+      href: "https://huggingface.co",
+      badges: [],
+      location: "United States, America",
+      title: "AI Engineer",
+      logoUrl: "/hugging_face.png",
+      start: "October 2025",
+      end: "December 2025",
+      description:
+        "Worked with the Rag in HuggingFace and finning tuned the LoRA model for better performance.",
+    },
   ],
   education: [
     {
