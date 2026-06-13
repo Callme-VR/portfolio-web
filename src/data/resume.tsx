@@ -93,7 +93,7 @@ export const DATA = {
       badges: [],
       location: "United States, America",
       title: "AI Engineer",
-      logoUrl: "/hugging_face.png",
+      logoUrl: "/hugging_face1.png",
       start: "October 2025",
       end: "December 2025",
       description:
