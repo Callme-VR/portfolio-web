@@ -14,9 +14,9 @@ export const DATA = {
   location: "Noida, India",
   locationLink: "https://www.google.com/maps/place/Noida",
   description:
-    "Ai Engineer and Designer. I love building things and Want To Be Founder and very active on X.",
+    "AI Engineer and Designer passionate about building intelligent systems and scalable applications. Currently focused on developing production-ready AI solutions and contributing to open-source projects.",
   summary:
-    "I am a Ai Engineer and Designer with a passion for building things and helping the businesses through technology and Skills.Very active on X.",
+    "AI Engineer and Designer with expertise in building end-to-end ML pipelines, developing intelligent applications, and optimizing model performance. Skilled in full-stack development with a focus on creating impactful AI solutions for businesses.",
   avatarUrl: "/vishal.jpeg",
 
   skills: {
@@ -91,13 +91,13 @@ export const DATA = {
       company: "HuggingFace",
       href: "https://huggingface.co",
       badges: [],
-      location: "United States, America",
-      title: "AI Engineer",
+      location: "Remote",
+      title: "AI/ML Engineer Intern",
       logoUrl: "/hugging_face1.png",
       start: "October 2025",
       end: "December 2025",
       description:
-        "Worked with the Rag in HuggingFace and finning tuned the LoRA model for better performance.",
+        "Collaborated with the team to enhance large language models through advanced optimization techniques and performance tuning. Implemented fine-tuning pipelines and Retrieval-Augmented Generation (RAG) systems to improve model accuracy and contextual understanding. Developed and optimized ML pipelines, improved model inference speed, and enhanced contextual retrieval mechanisms for production-ready applications.",
     },
   ],
   education: [
