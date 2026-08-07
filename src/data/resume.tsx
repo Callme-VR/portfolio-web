@@ -113,6 +113,7 @@ export const DATA = {
   projects: [
     {
       title: "DocterlogyAI",
+      category: "ai",
       href: "https://docterlogy.vercel.app",
       dates: "November 2024 - Present",
       active: true,
@@ -149,6 +150,7 @@ export const DATA = {
     },
     {
       title: "ReviewerAi",
+      category: "ai",
       href: "https://riviewer.vercel.app",
       dates: "November 2024 - Present",
       active: true,
@@ -182,6 +184,7 @@ export const DATA = {
     },
     {
       title: "PORTUI",
+      category: "web",
       href: "https://portui.vercel.app",
       dates: "August 2024 - Present",
       active: true,
@@ -214,6 +217,7 @@ export const DATA = {
     },
     {
       title: "Clyndra",
+      category: "web",
       href: "https://cy-lndra.vercel.app",
       dates: "Month Year - Present",
       active: true,
