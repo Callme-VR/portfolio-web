@@ -112,6 +112,35 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "TripMate AI",
+      category: "ai",
+      href: "https://travelagent-olive.vercel.app/",
+      dates: "January 2025 - Present",
+      active: true,
+      description:
+        "TripMate AI is a multi-agent travel planner system built to search flights, discover hotels, and generate personalized travel itineraries using an intelligent LangGraph multi-agent architecture.",
+      technologies: [
+        "Next.js",
+        "FastAPI",
+        "LangGraph",
+        "Groq",
+        "PostgreSQL",
+        "Tavily",
+        "AviationStack",
+        "TypeScript",
+        "TailwindCSS",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://travelagent-olive.vercel.app/",
+          icon: <Icons.globe className="size-4" />,
+        },
+      ],
+      image: "/tripmate.png",
+      video: "",
+    },
+    {
       title: "DocterlogyAI",
       category: "ai",
       href: "https://docterlogy.vercel.app",
@@ -247,7 +276,7 @@ export const DATA = {
           icon: <Icons.github className="size-4" />,
         },
       ],
-      image: "/home.png",
+      image: "",
       video: "",
     },
   ],
