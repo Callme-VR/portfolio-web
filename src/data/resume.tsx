@@ -276,7 +276,7 @@ export const DATA = {
           icon: <Icons.github className="size-4" />,
         },
       ],
-      image: "",
+      image: "/Cly.png",
       video: "",
     },
   ],
