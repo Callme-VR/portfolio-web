@@ -11,7 +11,7 @@ export function AgeCounter({ birthDate = "2003-05-15" }: AgeCounterProps) {
 
   useEffect(() => {
     const birth = new Date(birthDate).getTime();
-    
+
     const updateAge = () => {
       const now = Date.now();
       const ageInYears = (now - birth) / (1000 * 60 * 60 * 24 * 365.2425);
