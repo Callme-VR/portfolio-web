@@ -13,10 +13,15 @@ export const DATA = {
   url: "https://vishal-lime.vercel.app",
   location: "Noida, India",
   locationLink: "https://www.google.com/maps/place/Noida",
+  birthDate: "2003-08-11",
   description:
     "AI Engineer and Designer passionate about building intelligent systems and scalable applications. Currently focused on developing production-ready AI solutions and contributing to open-source projects.",
   summary:
-    "AI Engineer and Designer with expertise in building end-to-end ML pipelines, developing intelligent applications, and optimizing model performance. Skilled in full-stack development with a focus on creating impactful AI solutions for businesses.",
+
+    "-  Building **Applied Ai Engineering Products** and production-ready AI Products\n" +
+    "-  Developing **intelligent applications** powered by modern AI/ML frameworks\n" +
+    "-  Contribute To **open-source** Organization and community building\n" +
+    "-  Focused on **optimizing model performance** and scalable architectures",
   avatarUrl: "/vishal.jpeg",
 
   skills: {
