@@ -27,7 +27,7 @@ export default function Page() {
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="font-bold tracking-tighter sm:text-3xl xl:text-4xl/none"
+                className=" text-3xl font-bold tracking-tighter sm:text-3xl xl:text-4xl/none"
                 yOffset={8}
                 text={`hi, ${DATA.name.split(" ")[0].toLowerCase()} here`}
               />
