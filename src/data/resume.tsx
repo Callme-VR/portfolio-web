@@ -35,10 +35,10 @@ export const DATA = {
       "GraphQL",
       "REST APIs",
     ],
-    Databases: ["PostgreSQL", "MongoDB", "SQLITE", "SQL"],
+    Databases: ["PostgreSQL", "MongoDB", "SQLITE", "SQL", "Redis"],
     DevOps: ["Docker", "Kubernetes", "AWS", "Git", "Linux", "CI/CD"],
-    "AI/ML": ["NumPy", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn"],
-    Design: ["Figma", "UI/UX", "Framer"],
+    "AI/ML": ["NumPy", "Pandas", "LangChain", "LangGraph", "LangSmith"],
+    Design: ["Figma"],
   },
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
