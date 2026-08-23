@@ -34,9 +34,10 @@ export const DATA = {
       "Prisma",
       "GraphQL",
       "REST APIs",
+      "Pydantic"
     ],
-    Databases: ["PostgreSQL", "MongoDB", "SQLITE", "SQL", "Redis"],
-    DevOps: ["Docker", "Kubernetes", "AWS", "Git", "Linux", "CI/CD"],
+    Databases: ["PostgreSQL", "MongoDB", "SQLITE", "SQL", "Redis", "Pinecone"],
+    DevOps: ["Docker", "Kubernetes", "AWS(s3,ECR,ECS)", "Git", "Linux", "CI/CD"],
     "AI/ML": ["NumPy", "Pandas", "LangChain", "LangGraph", "LangSmith"],
     Design: ["Figma"],
   },
