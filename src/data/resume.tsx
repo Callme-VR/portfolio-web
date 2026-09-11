@@ -285,5 +285,32 @@ export const DATA = {
       image: "/Cly.png",
       video: "",
     },
+    {
+      title: "Klyro",
+      category: "web",
+      href: "https://klyrov1.vercel.app/",
+      dates: "2026 - Present",
+      active: true,
+      description:
+        "Klyro is a real-time collaborative workspace with a WebSocket canvas engine, enabling agile teams to manage boards, cards, live team presence, and instant updates in one living workspace.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "React",
+        "TailwindCSS",
+        "WebSockets",
+        "Node.js",
+        "Vercel",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://klyrov1.vercel.app/",
+          icon: <Icons.globe className="size-4" />,
+        },
+      ],
+      image: "/klyro.png",
+      video: "",
+    },
   ],
 } as const;
