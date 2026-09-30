@@ -1,9 +1,9 @@
 import { AgeCounter } from "@/components/age-counter";
-import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
+import { TechIcon } from "@/components/tech-icon";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -135,21 +135,25 @@ export default function Page() {
         </div>
       </section>
       <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-3">
+        <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
+            <div className="flex flex-col space-y-1">
+              <h2 className="text-xl font-bold tracking-tight">Skills</h2>
+            </div>
           </BlurFade>
+
+          {/* Categorized Skill Badges with Colorful Icons */}
           {Object.entries(DATA.skills).map(([category, skills], categoryId) => (
             <div
               key={category}
-              className="space-y-2 group rounded-xl p-2 transition-all duration-500 hover:bg-black/5 dark:hover:bg-white/5 hover:backdrop-blur-sm hover:border hover:border-black/5 dark:hover:border-white/10 hover:shadow-2xl"
+              className="space-y-2 group rounded-xl p-2 transition-all duration-300"
             >
               <BlurFade delay={BLUR_FADE_DELAY * 10 + categoryId * 0.05}>
-                <h3 className="text-sm font-medium text-muted-foreground group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors duration-300">
                   {category}
                 </h3>
               </BlurFade>
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-2">
                 {skills.map((skill, id) => (
                   <BlurFade
                     key={skill}
@@ -157,9 +161,11 @@ export default function Page() {
                   >
                     <Badge
                       key={skill}
-                      className="transition-all duration-300 ease-out hover:scale-110 hover:bg-black/5 dark:hover:bg-white/20 hover:backdrop-blur-md hover:border-black/10 dark:hover:border-white/30 hover:shadow-xl cursor-default"
+                      className="group/badge relative flex items-center gap-2 px-3 py-1.5 text-xs font-medium cursor-default transition-all duration-300 ease-out border border-neutral-200 dark:border-neutral-800/80 bg-neutral-100/80 dark:bg-neutral-900/80 text-neutral-800 dark:text-neutral-200 hover:-translate-y-1 hover:scale-105 hover:border-primary/50 dark:hover:border-primary/50 hover:bg-neutral-200/90 dark:hover:bg-neutral-800/90 hover:shadow-md hover:shadow-primary/5"
+                      variant="outline"
                     >
-                      {skill}
+                      <TechIcon name={skill} className="size-4 shrink-0 transition-transform duration-300 group-hover/badge:scale-125 group-hover/badge:rotate-6" />
+                      <span className="transition-colors duration-300 group-hover/badge:text-primary font-semibold">{skill}</span>
                     </Badge>
                   </BlurFade>
                 ))}
