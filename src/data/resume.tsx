@@ -124,7 +124,9 @@ export const DATA = {
       dates: "January 2025 - Present",
       active: true,
       description:
-        "TripMate AI is a multi-agent travel planner system built to search flights, discover hotels, and generate personalized travel itineraries using an intelligent LangGraph multi-agent architecture.",
+        "- Multi-agent travel planner system to search flights & hotels\n" +
+        "- Intelligent LangGraph multi-agent orchestration architecture\n" +
+        "- Tavily search API and AviationStack real-time flight tracking",
       technologies: [
         "Next.js",
         "FastAPI",
@@ -153,7 +155,9 @@ export const DATA = {
       dates: "November 2024 - Present",
       active: true,
       description:
-        "DocterlogyAI is a platform that allows users to find the best doctors in their area and provide consultation with them using AI. It is a great way to find the best doctors in your area.",
+        "- AI platform to locate top medical specialists & book appointments\n" +
+        "- Voice AI consultations powered by Vapi AI & Vercel AI SDK\n" +
+        "- Secure Stripe payments with PostgreSQL and Prisma backend",
       technologies: [
         "Next.js",
         "TypeScript",
@@ -189,7 +193,9 @@ export const DATA = {
       dates: "November 2024 - Present",
       active: true,
       description:
-        "ReviewerAi is a platform that allows users to review GitHub errors and issues and provide solutions for better improvement of a codebase. It uses the Vercel AI SDK to generate solutions for codebase improvement.",
+        "- Automated GitHub code & issue reviewer powered by LLMs\n" +
+        "- Codebase improvement solutions via Vercel AI SDK\n" +
+        "- Dockerized environment with Prisma & PostgreSQL storage",
       technologies: [
         "Next.js",
         "TypeScript",
@@ -223,7 +229,9 @@ export const DATA = {
       dates: "August 2024 - Present",
       active: true,
       description:
-        "PortUI is a platform that allows users to create and manage their portfolio website. It is a great way to create and manage your portfolio website and it has various types of components for making beautiful websites.",
+        "- UI component hub for designing personal developer portfolios\n" +
+        "- Next.js, TailwindCSS, Shadcn UI & Magic UI integration\n" +
+        "- Interactive MDX docs and seamless deployment on Vercel",
       technologies: [
         "Next.js",
         "TypeScript",
@@ -252,10 +260,12 @@ export const DATA = {
       title: "Clyndra",
       category: "web",
       href: "https://cy-lndra.vercel.app",
-      dates: "Month Year - Present",
+      dates: "2024 - Present",
       active: true,
       description:
-        "A brief description of your project. Explain what it does, who it's for, and what makes it special.",
+        "- High-performance web app for data operations & team workflows\n" +
+        "- Modern React UI built with TailwindCSS and Shadcn UI\n" +
+        "- Drizzle ORM, Prisma, PostgreSQL database & Docker setup",
       technologies: [
         "Next.js",
         "TypeScript",
@@ -290,7 +300,9 @@ export const DATA = {
       dates: "2026 - Present",
       active: true,
       description:
-        "Klyro is a real-time collaborative workspace with a WebSocket canvas engine, enabling agile teams to manage boards, cards, live team presence, and instant updates in one living workspace.",
+        "- Real-time collaborative workspace with WebSocket canvas engine\n" +
+        "- Agile team management for boards, cards & live presence\n" +
+        "- Instant state synchronization across multi-user sessions",
       technologies: [
         "Next.js",
         "TypeScript",

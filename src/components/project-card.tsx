@@ -78,7 +78,7 @@ export function ProjectCard({
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
           </div>
-          <div className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
+          <div className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert prose-ul:list-disc prose-ul:pl-3.5 prose-li:my-0.5">
             <Markdown>{description}</Markdown>
           </div>
         </div>
